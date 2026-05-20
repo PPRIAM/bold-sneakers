@@ -13,6 +13,8 @@
   --muted: #D1D2CD;
   --border: #000000;
   --radius: 0.5rem;
+  --glass-bg: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.2);
 }
 
 @theme inline {
@@ -37,7 +39,9 @@
     --foreground: #E9EAE4;
     --primary: #0047FF;
     --muted: #1A1A1A;
-    --border: #E9EAE4;
+    --border: #333333;
+    --glass-bg: rgba(0, 0, 0, 0.2);
+    --glass-border: rgba(255, 255, 255, 0.1);
   }
 
   @keyframes mesh-flow {
@@ -97,4 +101,40 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+}
+
+.text-glow {
+  text-shadow: 0 0 20px var(--primary);
+}
+
+/* From Uiverse.io by mayurd8862 (Adapted) - Tags: neon, #button */
+.galaxy-btn-neon {
+  background-color: var(--background);
+  border: 1px solid var(--primary);
+  color: var(--primary);
+  box-shadow: 0 0 15px var(--primary),
+              0 0 5px var(--primary) inset;
+  transition: all 0.3s ease;
+}
+
+.galaxy-btn-neon:hover {
+  transform: translateY(-2px);
+  color: var(--primary-foreground);
+  background-color: var(--primary);
+  box-shadow: 0 0 25px var(--primary),
+              0 0 10px var(--primary) inset;
+}
+
+/* From Uiverse.io by adamgiebl (Adapted) - Tags: skeuomorphism, glassmorphism, claymorphism */
+.galaxy-card {
+  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+  background: var(--glass-bg);
 }

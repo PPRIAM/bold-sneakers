@@ -1,13 +1,22 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ProductGrid from "@/components/shop/ProductGrid";
-import fs from "fs/promises";
-import path from "path";
+import prisma from "@/lib/prisma";
 
 async function getProducts() {
-  const dataPath = path.join(process.cwd(), "src/data/products.json");
-  const data = await fs.readFile(dataPath, "utf8");
-  return JSON.parse(data);
+  const products = await prisma.product.findMany();
+  // Map Prisma models to the shape expected by ProductGrid
+  return products.map(p => {
+    const [category, color] = (p.description || "Lifestyle - Black").split(" - ");
+    return {
+      id: p.id,
+      name: p.name,
+      price: p.price,
+      image: p.imageUrl || "/hero.png",
+      category,
+      color,
+    };
+  });
 }
 
 export default async function ShopPage() {

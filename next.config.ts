@@ -3,7 +3,6 @@ import type { NextConfig } from "next";
 const basePath = process.env.BASE_PATH || (process.env.GITHUB_PAGES === "true" ? "/bold-sneakers" : "");
 
 const nextConfig: NextConfig = {
-  output: "export",
   images: {
     unoptimized: true,
   },

@@ -4,14 +4,22 @@ import HeroSection from "@/components/landing/HeroSection";
 import SneakerCard from "@/components/SneakerCard";
 import { Zap, Shield, Rocket, ArrowRight } from "lucide-react";
 import Link from "next/link";
-import fs from "fs/promises";
-import path from "path";
+import prisma from "@/lib/prisma";
 
 async function getTrendingProducts() {
-  const dataPath = path.join(process.cwd(), "src/data/products.json");
-  const data = await fs.readFile(dataPath, "utf8");
-  const products = JSON.parse(data);
-  return products.slice(0, 3).map((p: any) => ({ ...p, tag: p.id === 1 ? "New Arrival" : undefined }));
+  const products = await prisma.product.findMany({ take: 3 });
+  return products.map((p, i) => {
+    const [category, color] = (p.description || "Lifestyle - Black").split(" - ");
+    return {
+      id: p.id,
+      name: p.name,
+      price: p.price,
+      image: p.imageUrl || "/hero.png",
+      category,
+      color,
+      tag: i === 0 ? "New Arrival" : undefined
+    };
+  });
 }
 
 import * as motion from "framer-motion/client";
@@ -43,9 +51,9 @@ export default async function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="group space-y-6 p-8 border border-border/10 hover:border-primary/30 transition-colors rounded-xl bg-background/5"
+              className="group space-y-6 p-8 galaxy-card hover:border-primary/50 transition-colors rounded-[2rem]"
             >
-              <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
+              <div className="w-16 h-16 bg-primary/20 rounded-2xl flex items-center justify-center group-hover:scale-110 group-hover:shadow-[0_0_30px_rgba(0,71,255,0.5)] transition-all duration-500">
                 <feature.icon className="text-primary w-8 h-8" />
               </div>
               <h3 className="text-3xl font-black uppercase italic tracking-tighter">{feature.title}</h3>
@@ -80,4 +88,3 @@ export default async function Home() {
     </main>
   );
 }
-

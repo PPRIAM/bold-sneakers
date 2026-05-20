@@ -45,7 +45,7 @@ export default function HeroSection() {
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <Link 
               href="/shop" 
-              className="group relative flex items-center gap-3 bg-primary text-primary-foreground px-10 py-5 text-sm font-black uppercase tracking-[0.2em] hover:bg-primary/90 transition-all rounded-sm overflow-hidden"
+              className="group relative flex items-center gap-3 bg-primary text-primary-foreground px-10 py-5 text-sm font-black uppercase tracking-[0.2em] hover:shadow-[0_0_30px_rgba(0,71,255,0.8)] transition-all rounded-[1rem] overflow-hidden"
             >
               <motion.span whileHover={{ x: -5 }}>Shop the Drop</motion.span>
               <ArrowRight className="group-hover:translate-x-1 transition-transform" size={18} />
@@ -54,7 +54,7 @@ export default function HeroSection() {
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <Link 
               href="/collections" 
-              className="px-10 py-5 text-sm font-black uppercase tracking-[0.2em] border-2 border-border hover:bg-foreground hover:text-background transition-all rounded-sm"
+              className="galaxy-btn-neon px-10 py-5 text-sm font-black uppercase tracking-[0.2em] rounded-[1rem] inline-block"
             >
               View Collections
             </Link>

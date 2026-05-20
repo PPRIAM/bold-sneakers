@@ -2,16 +2,18 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { ShoppingCart, Menu, X, User, Ruler } from "lucide-react";
+import { ShoppingCart, Menu, X, User, Ruler, LogOut } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { usePathname } from "next/navigation";
 import SizingGuide from "./SizingGuide";
+import { useAppContext } from "@/context/AppContext";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isSizingOpen, setIsSizingOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
+  const { user, login, logout, cart, setIsCartOpen } = useAppContext();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -26,6 +28,17 @@ export default function Navbar() {
     { name: "About", href: "/about" },
   ];
 
+  const cartItemsCount = cart.reduce((acc, item) => acc + item.quantity, 0);
+
+  const handleAuthClick = () => {
+    if (user) {
+      logout();
+    } else {
+      const email = prompt("Enter email to login:");
+      if (email) login(email);
+    }
+  };
+
   return (
     <nav className="fixed top-6 left-0 right-0 z-50 px-6 flex justify-center pointer-events-none">
       <motion.div 
@@ -34,11 +47,10 @@ export default function Navbar() {
         className={`
           pointer-events-auto
           flex items-center gap-8 px-8 py-4 
-          bg-primary text-primary-foreground
-          rounded-full shadow-[0_20px_50px_rgba(0,71,255,0.3)]
-          backdrop-blur-xl border border-white/20
+          glass text-white
+          rounded-full shadow-[0_20px_50px_rgba(0,71,255,0.15)]
           transition-all duration-500 ease-out
-          ${scrolled ? "scale-95 py-3 px-6 opacity-90" : "scale-100"}
+          ${scrolled ? "scale-95 py-3 px-6 opacity-95 shadow-[0_20px_50px_rgba(0,71,255,0.3)]" : "scale-100"}
         `}
       >
         {/* Logo */}
@@ -78,10 +90,20 @@ export default function Navbar() {
           >
             <Ruler size={18} />
           </button>
-          <button className="hover:scale-110 transition-transform"><User size={18} /></button>
-          <button className="relative hover:scale-110 transition-transform">
+          <button onClick={handleAuthClick} className="hover:scale-110 transition-transform flex items-center gap-2" title={user ? "Logout" : "Login"}>
+            {user ? <LogOut size={18} /> : <User size={18} />}
+            {user && <span className="text-[10px] hidden md:block">{user.name}</span>}
+          </button>
+          <button 
+            className="relative hover:scale-110 transition-transform"
+            onClick={() => setIsCartOpen(true)}
+          >
             <ShoppingCart size={18} />
-            <span className="absolute -top-1 -right-1 w-2 h-2 bg-white rounded-full" />
+            {cartItemsCount > 0 && (
+              <span className="absolute -top-2 -right-2 w-4 h-4 bg-white text-black text-[10px] font-bold rounded-full flex items-center justify-center">
+                {cartItemsCount}
+              </span>
+            )}
           </button>
           <button 
             className="md:hidden hover:scale-110 transition-transform"

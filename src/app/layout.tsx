@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import TransitionWrapper from "@/components/TransitionWrapper";
+import { AppProvider } from "@/context/AppContext";
+import CartModal from "@/components/CartModal";
 
 export const metadata: Metadata = {
   title: {
@@ -40,9 +42,12 @@ export default function RootLayout({
     <html lang="en" className="dark">
       <body className="antialiased selection:bg-primary selection:text-white bg-black">
         <div className="grain" />
-        <TransitionWrapper>
-          {children}
-        </TransitionWrapper>
+        <AppProvider>
+          <TransitionWrapper>
+            {children}
+          </TransitionWrapper>
+          <CartModal />
+        </AppProvider>
       </body>
     </html>
   );
