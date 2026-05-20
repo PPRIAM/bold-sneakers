@@ -5,6 +5,7 @@ import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { getAssetPath } from "@/utils/paths";
 import { Shield, Zap, Wind, Cpu } from "lucide-react";
 
 export default function TheLabPage() {
@@ -53,7 +54,7 @@ export default function TheLabPage() {
           className="relative w-full max-w-5xl aspect-square"
         >
           <Image
-            src="/hero.png"
+            src={getAssetPath("/hero.png")}
             alt="Sneaker Anatomy"
             fill
             sizes="100vw"

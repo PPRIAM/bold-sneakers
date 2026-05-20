@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import { getAssetPath } from "@/utils/paths";
 
 interface SneakerCardProps {
   product: {
@@ -31,7 +32,7 @@ export default function SneakerCard({ product }: SneakerCardProps) {
     >
       <div className="relative aspect-[4/5] bg-muted/30 overflow-hidden rounded-2xl border border-border/50">
         <Image 
-          src={product.image} 
+          src={getAssetPath(product.image)} 
           alt={product.name} 
           fill 
           sizes="(max-width: 768px) 100vw, 33vw"

@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import Image from "next/image";
 import { History, Target, Users, MapPin } from "lucide-react";
 import * as motion from "framer-motion/client"; // Use framer-motion/client for server components
+import { getAssetPath } from "@/utils/paths";
 
 export default function AboutPage() {
   return (
@@ -38,7 +39,7 @@ export default function AboutPage() {
           </motion.div>
           <div className="relative aspect-square bg-muted/20 rounded-3xl overflow-hidden border border-border/50">
             <Image 
-              src="/hero.png" 
+              src={getAssetPath("/hero.png")} 
               alt="Brand Story" 
               fill 
               className="object-contain p-12 -rotate-12 hover:rotate-0 transition-transform duration-700" 

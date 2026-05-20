@@ -4,6 +4,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { Bell } from "lucide-react";
 import CountdownTimer from "./CountdownTimer";
+import { getAssetPath } from "@/utils/paths";
 
 interface DropCardProps {
   name: string;
@@ -22,7 +23,7 @@ export default function DropCard({ name, price, date, image, colorway, priority 
     >
       <div className="relative aspect-[4/5] overflow-hidden rounded-xl bg-background">
         <Image 
-          src={image} 
+          src={getAssetPath(image)} 
           alt={name} 
           fill 
           sizes="(max-width: 768px) 100vw, 50vw"

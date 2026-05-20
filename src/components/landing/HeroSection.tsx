@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
+import { getAssetPath } from "@/utils/paths";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 30 },
@@ -68,7 +69,7 @@ export default function HeroSection() {
         className="relative w-full max-w-6xl aspect-[16/9] mt-[-60px] md:mt-[-180px] -z-10 pointer-events-none select-none"
       >
         <Image
-          src="/hero.png"
+          src={getAssetPath("/hero.png")}
           alt="B0LD Sneaker V1"
           fill
           sizes="100vw"
