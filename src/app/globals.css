@@ -1,6 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&display=swap');
 @import "tailwindcss";
 
 :root {
+  --font-outfit: 'Outfit', sans-serif;
   --background: #E9EAE4;
   --foreground: #000000;
   --primary: #0047FF;
@@ -36,6 +38,58 @@
     --primary: #0047FF;
     --muted: #1A1A1A;
     --border: #E9EAE4;
+  }
+
+  @keyframes mesh-flow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  .animate-mesh {
+    background: linear-gradient(-45deg, #000000, #001a5e, #0047FF, #000000);
+    background-size: 400% 400%;
+    animation: mesh-flow 15s ease infinite;
+  }
+
+  .grain {
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    right: -50%;
+    bottom: -50%;
+    width: 200%;
+    height: 200%;
+    background: transparent url('http://assets.iceable.com/img/noise-transparent.png') repeat 0 0;
+    background-repeat: repeat;
+    animation: grain 1000ms steps(10) infinite;
+    opacity: 0.05;
+    visibility: visible;
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  @keyframes grain {
+    0%, 100% { transform:translate(0, 0); }
+    10% { transform:translate(-5%, -10%); }
+    20% { transform:translate(-15%, 5%); }
+    30% { transform:translate(7%, -25%); }
+    40% { transform:translate(-5%, 25%); }
+    50% { transform:translate(-15%, 10%); }
+    60% { transform:translate(15%, 0%); }
+    70% { transform:translate(0%, 15%); }
+    80% { transform:translate(3%, 35%); }
+    90% { transform:translate(-10%, 10%); }
+  }
+
+  .scrollbar-hide::-webkit-scrollbar,
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide,
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 }
 

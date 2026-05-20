@@ -1,0 +1,23 @@
+[
+  {
+    "name": "B0LD Nebula X",
+    "price": "$250",
+    "colorway": "Void Purple / Galaxy Blue",
+    "date": "2026-05-25T15:00:00.000Z",
+    "image": "/hero.png"
+  },
+  {
+    "name": "B0LD Ghost V1",
+    "price": "$195",
+    "colorway": "Arctic White / Silver Rush",
+    "date": "2026-05-30T10:00:00.000Z",
+    "image": "/collection.png"
+  },
+  {
+    "name": "B0LD Magma Pro",
+    "price": "$210",
+    "colorway": "Volcano Red / Ash Black",
+    "date": "2026-06-05T12:00:00.000Z",
+    "image": "/hero.png"
+  }
+]

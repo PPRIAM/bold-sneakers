@@ -1,0 +1,8 @@
+[
+  { "id": 1, "name": "B0LD Stealth V2", "price": 220, "category": "Performance", "color": "Black", "image": "/hero.png" },
+  { "id": 2, "name": "B0LD HyperDrive", "price": 185, "category": "Lifestyle", "color": "White", "image": "/collection.png" },
+  { "id": 3, "name": "B0LD Gravity X", "price": 210, "category": "Tactical", "color": "Grey", "image": "/hero.png" },
+  { "id": 4, "name": "B0LD Nebula V1", "price": 195, "category": "Performance", "color": "Blue", "image": "/collection.png" },
+  { "id": 5, "name": "B0LD Core Pro", "price": 240, "category": "Performance", "color": "Black", "image": "/hero.png" },
+  { "id": 6, "name": "B0LD Zen Runner", "price": 160, "category": "Lifestyle", "color": "Grey", "image": "/collection.png" }
+]
